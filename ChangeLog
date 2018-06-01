@@ -1,3 +1,9 @@
+2018.06.01, v1.1.1
+
+fix:
+- (psedit) kill: SIGKILL
+
+
 2018.06.01, v1.1.0
 
 feature:
