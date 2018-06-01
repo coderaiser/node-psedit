@@ -9,6 +9,7 @@ const {
     getPids,
     pulloutPids,
     diff,
+    build,
 } = require('..');
 
 test('psedit: get', async (t) => {
@@ -57,25 +58,16 @@ test('psedit: kill', (t) => {
 });
 
 test('psedit: build: table', async (t) => {
-    const psList = async () => {
-        return [{
-            pid: '1337',
-            cmd: 'node',
-            cpu: '0.1',
-            name: 'node',
-            memory: '6.0',
-        }];
-    };
+    const data = [[
+        '1337',
+        '59.53mb',
+        '0.1',
+        '*node',
+        'node',
+    ]];
     
-    clear('..');
-    mock('ps-list', psList);
-    
-    const {get, build} = require('..');
-    const data = await get();
     const result = build(data);
     const expected = '1337       59.53mb    0.1        *node node\n';
-    
-    mock.stop('ps-list');
     
     t.deepEqual(result, expected, 'should equal');
     t.end();
