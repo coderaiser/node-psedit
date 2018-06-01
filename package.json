@@ -27,6 +27,7 @@
     "report": "nyc report --reporter=text-lcov | coveralls"
   },
   "dependencies": {
+    "currify": "^2.0.6",
     "format-io": "^0.9.6",
     "ps-list": "^4.1.0",
     "table": "^4.0.3"

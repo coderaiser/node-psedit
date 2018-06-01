@@ -8,6 +8,7 @@ const sinon = require('sinon');
 const {
     getPids,
     pulloutPids,
+    diff,
 } = require('..');
 
 test('psedit: get', async (t) => {
@@ -99,7 +100,7 @@ test('psedit: getPids: no args', (t) => {
     t.end();
 });
 
-test('psedit: pulloutPids', (t) => {
+test('psedit: pulloutPids: no args', (t) => {
     t.throws(pulloutPids, /str should be a string!/, 'should throw');
     t.end();
 });
@@ -113,3 +114,33 @@ test('psedit: pulloutPids', (t) => {
     t.end();
 });
 
+test('psedit: pulloutPids', (t) => {
+    const str = '1337       59.53mb    0.1        *node node\n';
+    const result = pulloutPids(str);
+    const expected = [1337];
+    
+    t.deepEqual(result, expected, 'should equal');
+    t.end();
+});
+
+test('psedit: diff: no args', (t) => {
+    t.throws(diff, /pids should be an array!/, 'should throw');
+    t.end();
+});
+
+test('psedit: diff: no cleanPids', (t) => {
+    const fn = () => diff([]);
+    
+    t.throws(fn, /cleanPids should be an array!/, 'should throw');
+    t.end();
+});
+
+test('psedit: diff: no cleanPids', (t) => {
+    const result = diff([1, 2, 3], [1, 3]);
+    const expected = [
+        2
+    ];
+    
+    t.deepEqual(result, expected, 'should equal');
+    t.end();
+});

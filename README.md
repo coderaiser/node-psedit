@@ -76,6 +76,18 @@ const {kill} = require('psedit');
 kill([1, 2, 3]);
 ```
 
+### diff
+
+Diff pids.
+
+```js
+const {diff} = require('psedit');
+
+diff([1, 2, 3], [1, 3]);
+// returns
+[2]
+```
+
 ## License
 
 MIT
