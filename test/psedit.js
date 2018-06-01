@@ -52,7 +52,7 @@ test('psedit: kill', (t) => {
     kill([1337]);
     process.kill = originalKill;
     
-    t.ok(killStub.calledWith(1337), 'should call kill');
+    t.ok(killStub.calledWith(1337, 'SIGKILL'), 'should call kill');
     t.end();
 });
 
