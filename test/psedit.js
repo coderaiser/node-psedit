@@ -2,8 +2,8 @@
 
 const test = require('tape');
 const mock = require('mock-require');
-const clear = require('clear-module');
 const sinon = require('sinon');
+const {reRequire} = mock;
 
 const {
     getPids,
@@ -12,32 +12,63 @@ const {
     build,
 } = require('..');
 
-const xtest = () => {};
-xtest('psedit: get', async (t) => {
-    const psList = async () => {
-        return [{
-            pid: '1337',
-            cmd: 'node',
-            cpu: '0.1',
-            name: 'node',
-            memory: '6.0',
-        }];
+test('psedit: get', async (t) => {
+    const processes = async () => {
+        return {
+            list: [{
+                pid: '1337',
+                mem_vsz: 38432,
+                pcpu: 0.3954900885279194,
+                name: 'init',
+                command: '/sbin/init',
+            }]
+        };
     };
     
-    clear('..');
-    mock('ps-list', psList);
-    
-    const {get} = require('..');
+    mock('systeminformation', {processes});
+   
+    const {get} = reRequire('..');
     const result = await get();
     const expected = [[
         '1337',
-        '59.53mb',
-        '0.1',
-        '*node',
-        'node',
+        '37.53kb',
+        '0.4',
+        '*init',
+        '/sbin/init',
     ]];
     
-    mock.stop('ps-list');
+    mock.stop('systeminformation');
+    
+    t.deepEqual(result, expected, 'should equal');
+    t.end();
+});
+
+test('psedit: get: low cpu load', async (t) => {
+    const processes = async () => {
+        return {
+            list: [{
+                pid: '1337',
+                mem_vsz: 38432,
+                pcpu: 0.0004900885279194,
+                name: 'init',
+                command: '/sbin/init',
+            }]
+        };
+    };
+    
+    mock('systeminformation', {processes});
+   
+    const {get} = reRequire('..');
+    const result = await get();
+    const expected = [[
+        '1337',
+        '37.53kb',
+        '0.0',
+        '*init',
+        '/sbin/init',
+    ]];
+    
+    mock.stop('systeminformation');
     
     t.deepEqual(result, expected, 'should equal');
     t.end();
@@ -56,8 +87,7 @@ test('psedit: kill', (t) => {
     const killStub = sinon.stub();
     
     process.kill = killStub;
-    clear('..');
-    const {kill} = require('..');
+    const {kill} = reRequire('..');
     
     kill([1337]);
     process.kill = originalKill;
