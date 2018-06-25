@@ -36,7 +36,7 @@
   "devDependencies": {
     "clear-module": "^2.1.0",
     "coveralls": "^3.0.0",
-    "eslint": "^4.0.0",
+    "eslint": "^5.0.0",
     "eslint-plugin-node": "^6.0.1",
     "mock-require": "^3.0.2",
     "nodemon": "^1.11.0",
