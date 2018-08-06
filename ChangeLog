@@ -1,3 +1,11 @@
+2018.08.06, v1.2.0
+
+feature:
+- (package) eslint-plugin-node v7.0.1
+- (package) add ps-list -> systeminformation
+- (package) eslint v5.0.0
+
+
 2018.06.12, v1.1.2
 
 feature:
