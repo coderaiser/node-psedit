@@ -18,7 +18,7 @@ test('psedit: get', async (t) => {
             list: [{
                 pid: '1337',
                 mem_vsz: 38432,
-                pcpu: 0.3954900885279194,
+                pcpu: 0.0004900885279194,
                 name: 'init',
                 command: '/sbin/init',
             }]
@@ -32,7 +32,7 @@ test('psedit: get', async (t) => {
     const expected = [[
         '1337',
         '37.53kb',
-        '0.4',
+        '0.0',
         '*init',
         '/sbin/init',
     ]];
