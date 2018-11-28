@@ -2,7 +2,7 @@
 
 const test = require('tape');
 const mock = require('mock-require');
-const sinon = require('sinon');
+const stub = require('@cloudcmd/stub');
 const {reRequire} = mock;
 
 const {
@@ -84,7 +84,7 @@ test('psedit: get', async (t) => {
 
 test('psedit: kill', (t) => {
     const {kill: originalKill} = process;
-    const killStub = sinon.stub();
+    const killStub = stub();
     
     process.kill = killStub;
     const {kill} = reRequire('..');
