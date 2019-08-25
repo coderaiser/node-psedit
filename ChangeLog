@@ -1,3 +1,9 @@
+2019.08.25, v2.0.1
+
+fix:
+- (psedit) cmd -> path, params
+
+
 2019.08.25, v2.0.0
 
 feature:
