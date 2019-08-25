@@ -16,15 +16,14 @@
     "ps"
   ],
   "scripts": {
-    "test": "tape test/*.js",
-    "watcher": "nodemon -w test -w lib --exec",
-    "watch:test": "npm run watcher -- npm test",
-    "watch:coverage": "npm run watcher -- npm run coverage",
-    "lint": "redrun lint:*",
-    "lint:lib": "eslint -c .eslintrc.server lib",
-    "lint:server": "eslint test",
-    "coverage": "nyc npm test",
-    "report": "nyc report --reporter=text-lcov | coveralls"
+    "test": "madrun test",
+    "watcher": "madrun watcher",
+    "watch:test": "madrun watch:test",
+    "watch:coverage": "madrun watch:coverage",
+    "lint": "madrun lint",
+    "fix:lint": "madrun fix:lint",
+    "coverage": "madrun coverage",
+    "report": "madrun report"
   },
   "dependencies": {
     "currify": "^3.0.0",
@@ -44,9 +43,10 @@
     "nodemon": "^1.11.0",
     "nyc": "^14.1.1",
     "putout": "^5.8.0",
-    "redrun": "^7.1.5"
+    "redrun": "^7.1.5",
+    "supertape": "^1.2.3"
   },
   "engines": {
-    "node": ">=4.0.0"
+    "node": ">=8.0.0"
   }
 }

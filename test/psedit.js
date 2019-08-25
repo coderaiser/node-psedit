@@ -1,6 +1,6 @@
 'use strict';
 
-const test = require('tape');
+const test = require('supertape');
 const mock = require('mock-require');
 const stub = require('@cloudcmd/stub');
 const {reRequire} = mock;
@@ -21,12 +21,12 @@ test('psedit: get', async (t) => {
                 pcpu: 0.0004900885279194,
                 name: 'init',
                 command: '/sbin/init',
-            }]
+            }],
         };
     };
     
     mock('systeminformation', {processes});
-   
+    
     const {get} = reRequire('..');
     const result = await get();
     const expected = [[
@@ -52,12 +52,12 @@ test('psedit: get: low cpu load', async (t) => {
                 pcpu: 0.0004900885279194,
                 name: 'init',
                 command: '/sbin/init',
-            }]
+            }],
         };
     };
     
     mock('systeminformation', {processes});
-   
+    
     const {get} = reRequire('..');
     const result = await get();
     const expected = [[
@@ -78,7 +78,7 @@ test('psedit: get', async (t) => {
     const {get} = require('..');
     const result = await get();
     
-    t.ok(Array.isArray(result),  'should return array');
+    t.ok(Array.isArray(result), 'should return array');
     t.end();
 });
 
@@ -114,9 +114,9 @@ test('psedit: build: table', async (t) => {
 
 test('psedit: getPids', (t) => {
     const data = [[
-        1
+        1,
     ], [
-        2
+        2,
     ]];
     
     const result = getPids(data);
@@ -169,7 +169,7 @@ test('psedit: diff: no cleanPids', (t) => {
 test('psedit: diff: no cleanPids', (t) => {
     const result = diff([1, 2, 3], [1, 3]);
     const expected = [
-        2
+        2,
     ];
     
     t.deepEqual(result, expected, 'should equal');
