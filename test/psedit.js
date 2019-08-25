@@ -20,7 +20,8 @@ test('psedit: get', async (t) => {
                 mem_vsz: 38432,
                 pcpu: 0.0004900885279194,
                 name: 'init',
-                command: '/sbin/init',
+                path: '/sbin/init',
+                params: '',
             }],
         };
     };
@@ -51,7 +52,8 @@ test('psedit: get: low cpu load', async (t) => {
                 mem_vsz: 38432,
                 pcpu: 0.0004900885279194,
                 name: 'init',
-                command: '/sbin/init',
+                path: '/sbin/init',
+                params: '-h',
             }],
         };
     };
@@ -65,7 +67,7 @@ test('psedit: get: low cpu load', async (t) => {
         '37.53kb',
         '0.0',
         '*init',
-        '/sbin/init',
+        '/sbin/init -h',
     ]];
     
     mock.stop('systeminformation');
