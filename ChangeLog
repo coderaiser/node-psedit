@@ -1,3 +1,17 @@
+2019.08.25, v2.0.0
+
+feature:
+- (psedit) drop support of node < 8
+- (package) redrun v7.1.5
+- (package) currify v3.0.0
+- (package) nyc v14.1.1
+- (package) table v5.4.6
+- (package) eslint v6.2.2
+- (package) eslint-plugin-node v9.1.0
+- (package) systeminformation v4.14.8
+- (package) sinon -> @cloudcmd/stub
+
+
 2018.08.06, v1.2.0
 
 feature:
