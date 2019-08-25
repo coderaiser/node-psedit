@@ -27,7 +27,7 @@
     "report": "nyc report --reporter=text-lcov | coveralls"
   },
   "dependencies": {
-    "currify": "^2.0.6",
+    "currify": "^3.0.0",
     "format-io": "^1.0.1",
     "systeminformation": "^4.14.8",
     "table": "^5.4.6"
@@ -38,9 +38,12 @@
     "coveralls": "^3.0.0",
     "eslint": "^6.2.2",
     "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-putout": "^2.0.0",
+    "madrun": "^2.5.0",
     "mock-require": "^3.0.2",
     "nodemon": "^1.11.0",
     "nyc": "^14.1.1",
+    "putout": "^5.8.0",
     "redrun": "^6.0.1"
   },
   "engines": {
