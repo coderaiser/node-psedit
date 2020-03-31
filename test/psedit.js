@@ -98,7 +98,7 @@ test('psedit: kill', (t) => {
     t.end();
 });
 
-test('psedit: build: table', async (t) => {
+test('psedit: build: table', (t) => {
     const data = [[
         '1337',
         '59.53mb',
